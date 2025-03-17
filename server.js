@@ -6,7 +6,7 @@ const stripe = require('stripe')('sk_test_51Ql16dAgLF2qD5NrppdWyqILJctHV7ejPJOiv
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:4242', 'null'],
+  origin: ['https://guccijenkins.github.io', 'null'],
   methods: ['GET', 'POST'],
   credentials: true,
   optionsSuccessStatus: 200
@@ -18,7 +18,7 @@ app.use(express.json()); // For parsing JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For parsing form data
 app.use(express.static('public'));
 
-const YOUR_DOMAIN = 'http://localhost:4242';
+const YOUR_DOMAIN = 'https://guccijenkins.github.io';
 
 app.post('/create-checkout-session', async (req, res) => {
 
