@@ -345,7 +345,10 @@ let toParse = [];
     toParse = JSON.parse(toStripe);
   }
       
-  console.log(toParse);  
+  const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
+
+  console.log("Price IDs:", ids);
+
 
 function checkOut(){
   // Using fetch from your frontend JavaScript
