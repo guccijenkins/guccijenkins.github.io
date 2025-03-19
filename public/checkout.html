@@ -339,11 +339,13 @@
 });
 
 let toStripe = localStorage.getItem('cartItems');
-    let toParse = JSON.parse(toStripe)
-    
-    const ids = toParse.map(product => product.id);
-    console.log(ids)
-        
+let toParse = [];
+
+  if (toStripe) {
+    toParse = JSON.parse(toStripe);
+  }
+      
+  console.log(toParse);  
 
 function checkOut(){
   // Using fetch from your frontend JavaScript
@@ -352,6 +354,7 @@ function checkOut(){
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Include credentials if needed
         body: JSON.stringify({
           priceIds: ids
         })
