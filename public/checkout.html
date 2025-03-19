@@ -338,35 +338,6 @@
     }
 });
 
-let toStripe = localStorage.getItem('cartItems');
-let toParse = [];
-
-  if (toStripe) {
-    toParse = JSON.parse(toStripe);
-  }
-      
-  const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
-
-function checkOut(){
-  // Using fetch from your frontend JavaScript
-      fetch('https://swycinskydesigns-server.vercel.app/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        
-        body: JSON.stringify({
-          priceIds: ids
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-      // Redirect the browser to Stripe's checkout page
-      window.location.href = data.url;
-      })
-      .catch(error => console.error('Error:', error));
-      }
-
 function removeFromCart(productName, cartItems, productElement) {
     // Remove the DOM element directly
     if (productElement) {
@@ -417,7 +388,34 @@ function removeFromCart(productName, cartItems, productElement) {
         output.innerText = "0"; // Clear UI cart balance
         sumPrice.innerText = "$0"; // Clear UI total price balance  
       }
-   
+   let toStripe = localStorage.getItem('cartItems');
+let toParse = [];
+
+  if (toStripe) {
+    toParse = JSON.parse(toStripe);
+  }
+      
+  const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
+
+  function checkOut(){
+    // Using fetch from your frontend JavaScript
+        fetch('https://swycinskydesigns-server.vercel.app/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          
+          body: JSON.stringify({
+            priceIds: ids
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+        // Redirect the browser to Stripe's checkout page
+        window.location.href = data.url;
+        })
+        .catch(error => console.error('Error:', error));
+        }
     </script>
       
       </body>
