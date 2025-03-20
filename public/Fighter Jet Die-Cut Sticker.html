@@ -291,9 +291,8 @@
               let productName = product.querySelector(".productName").innerText
               let productDesc = product.querySelector(".productDescription").innerText;
               let productPrice = product.querySelector(".productPrice").innerText.trim();
-              let productId = 'price_1QsSP7AgLF2qD5Nr5Q7QuVKK';
               let priceNumber = parseFloat(productPrice.replace(/\$/g, '').trim());
-
+              let productId = 'price_1QsSP7AgLF2qD5Nr5Q7QuVKK';
               let productImage = "https:\/\/images-api.printify.com\/mockup\/679520af3dc3a484a30680e9\/72006\/13462\/fighter-jet-die-cut-stickers.jpg?camera_label=front"
               
               addToCart(productName, productDesc, priceNumber, productId, productImage);
@@ -305,9 +304,11 @@
   function storeValue() {
     let itemCount = document.getElementById('cartCount');
     let count = parseInt(itemCount.innerText) || 0;
+    
     count = count + 1
     
     itemCount.innerText = count; // Update UI
+    
     let toCheckOutPage = localStorage.setItem('Counts', count); // Store updated count to display on checkout
     
   }
