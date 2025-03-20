@@ -365,6 +365,17 @@ function removeFromCart(productName, cartItems, productElement) {
 
       }
     } 
+
+      let toStripe = localStorage.getItem('cartItems');
+      let toParse = [];
+      
+        if (toStripe) {
+          toParse = JSON.parse(toStripe);
+        }
+            
+        const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
+      
+            console.log(ids)
            
       function clearCart(){
         
@@ -388,16 +399,7 @@ function removeFromCart(productName, cartItems, productElement) {
         output.innerText = "0"; // Clear UI cart balance
         sumPrice.innerText = "$0"; // Clear UI total price balance  
       }
-   let toStripe = localStorage.getItem('cartItems');
-let toParse = [];
-
-  if (toStripe) {
-    toParse = JSON.parse(toStripe);
-  }
-      
-  const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
-
-      console.log(ids)
+   
 
   function checkOut(){
     // Using fetch from your frontend JavaScript
