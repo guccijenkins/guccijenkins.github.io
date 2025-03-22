@@ -309,11 +309,15 @@
 
   function storeValue() {
     let itemCount = document.getElementById('cartCount');
+    let mobileCartCount = document.getElementById('mobileCartCount');
+    
     let count = parseInt(itemCount.innerText) || 0;
+    let count = parseInt(mobileCartCount.innerText) || 0;
     
     count = count + 1
     
     itemCount.innerText = count; // Update UI
+    mobileCartCount.innerText = count; // Update UI
     
     let toCheckOutPage = localStorage.setItem('Counts', count); // Store updated count to display on checkout
     
