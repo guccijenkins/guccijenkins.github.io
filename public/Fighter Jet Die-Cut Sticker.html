@@ -290,6 +290,7 @@
       
     let cartCount = localStorage.getItem('Counts') || 0;// gets and saves initial value on page when loaded
     document.getElementById("cartCount").innerText = cartCount; // Display stored cart count on album page
+    document.getElementById("mobileCartCount").innerText = cartCount; // Display stored cart count on album page
     
       
       document.querySelectorAll(".addToCartBtn").forEach(button => {
