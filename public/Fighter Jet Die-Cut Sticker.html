@@ -167,9 +167,19 @@
 
 <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
   <div class="container">
+    <a class="navbar-brand" href="home.html">swycinskydesigns</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <!-- Cart count visible on all screen sizes -->
+    <div class="d-flex align-items-center me-md-0 me-2">
+      <a class="nav-link position-relative" href="checkout.html">
+        <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg>
+        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+      </a>
+    </div>
+
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasLabel">swycinskydesigns</h5>
@@ -179,13 +189,11 @@
         <ul class="navbar-nav flex-grow-1 justify-content-between">
           <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="checkout.html">
-            <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg>
-          </a>
-          <h4><span id="cartCount">0</span></h4>
-          <h4><span>Items</span></h4>
-        </div>
-        </li>
+          <li class="nav-item d-md-none">
+            <a class="nav-link" href="checkout.html">
+              Cart (<span id="mobileCartCount">0</span> items)
+            </a>
+          </li>
         </ul>
       </div>
     </div>
