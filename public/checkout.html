@@ -8,7 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
     <meta property="og:image" content="Swycinsky Designs Product Mockup Template.png">
-    <title>swycinskydesigns - Checkout</title>
+    <title>swycinskydesigns - Cart</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
     <script src="https://js.stripe.com/v3/"></script>
@@ -363,17 +363,16 @@ function removeFromCart(productName, cartItems, productElement) {
         const totalPriceElement = document.getElementById("totalPrice");
         if (totalPriceElement) totalPriceElement.innerText = "$" + priceSum;
 
+        let toStripe = localStorage.getItem('cartItems');
+        let toParse = [];
+        
+          if (toStripe) {
+            toParse = JSON.parse(toStripe);
+          }
+              
+          const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
       }
     } 
-
-      let toStripe = localStorage.getItem('cartItems');
-      let toParse = [];
-      
-        if (toStripe) {
-          toParse = JSON.parse(toStripe);
-        }
-            
-        const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
       
             console.log(ids)
            
@@ -393,11 +392,17 @@ function removeFromCart(productName, cartItems, productElement) {
         let sumPrice = document.getElementById('totalPrice');
         let outputThumbNail = document.getElementById('productImage')
         
-        // if (!outputText) outputText.innerText = "No Items in Cart"; // Clear UI name
-        // if (!outputDesc) outputDesc.innerText = "No Items in Cart"; // Clear UI description
-        // outputPrice.innerText = "$0"; // Clear UI price
         output.innerText = "0"; // Clear UI cart balance
         sumPrice.innerText = "$0"; // Clear UI total price balance  
+
+         let toStripe = localStorage.getItem('cartItems');
+         let toParse = [];
+        
+          if (toStripe) {
+            toParse = JSON.parse(toStripe);
+          }
+              
+          const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
       }
    
 
