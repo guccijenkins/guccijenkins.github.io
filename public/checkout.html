@@ -313,7 +313,7 @@
      }
 
       
-     document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     // Initialize cart count
     let cartCount = localStorage.getItem('Counts') || 0;
     const countElement = document.getElementById("count_of_items");
@@ -349,7 +349,7 @@ function removeFromCart(productName, cartItems, productElement) {
         cartItems.splice(index, 1)
 
         // Update localStorage
-       let ids = localStorage.setItem('cartItems', JSON.stringify(cartItems));
+       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
         // Update cart count
         let cartCount = parseInt(localStorage.getItem('Counts')) || 0;
@@ -367,7 +367,7 @@ function removeFromCart(productName, cartItems, productElement) {
                  
       function clearCart(){
         
-        let ids = localStorage.removeItem('cartItems')
+        localStorage.removeItem('cartItems')
         localStorage.removeItem('Counts') 
 
         const listItem = document.getElementById("myList")
@@ -386,7 +386,9 @@ function removeFromCart(productName, cartItems, productElement) {
 
       }
 
-        let toStripe = localStorage.getItem('cartItems');
+        
+    function checkOut(){
+      let toStripe = localStorage.getItem('cartItems');
         let toParse = [];
         
           if (toStripe) {
@@ -394,9 +396,7 @@ function removeFromCart(productName, cartItems, productElement) {
           }
               
           const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
-          console.log(ids);
-
-    function checkOut(){
+          
       // Using fetch from your frontend JavaScript
         if (ids.length < 1){
           window.alert("There are no items in the cart.")
