@@ -407,7 +407,15 @@ function removeFromCart(productName, cartItems, productElement) {
           
           console.log(ids)
       }
-   
+
+        let toStripe = localStorage.getItem('cartItems');
+        let toParse = [];
+        
+          if (toStripe) {
+            toParse = JSON.parse(toStripe);
+          }
+              
+          const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
 
   function checkOut(){
     // Using fetch from your frontend JavaScript
