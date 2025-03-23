@@ -403,6 +403,10 @@ function removeFromCart(productName, cartItems, productElement) {
 
   function checkOut(){
     // Using fetch from your frontend JavaScript
+        if (ids.length < 1){
+          window.alert("There are no items in the cart.")
+        } else {
+      
         fetch('https://swycinskydesigns-server.vercel.app/create-checkout-session', {
           method: 'POST',
           headers: {
@@ -420,6 +424,7 @@ function removeFromCart(productName, cartItems, productElement) {
         })
         .catch(error => console.error('Error:', error));
         }
+  }
     </script>
       
       </body>
