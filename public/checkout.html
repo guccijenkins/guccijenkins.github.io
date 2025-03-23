@@ -362,21 +362,9 @@ function removeFromCart(productName, cartItems, productElement) {
         const priceSum = cartItems.reduce((sum, item) => sum + parseFloat(item.price || 0), 0);
         const totalPriceElement = document.getElementById("totalPrice");
         if (totalPriceElement) totalPriceElement.innerText = "$" + priceSum;
-
-        let toStripe = localStorage.getItem('cartItems');
-        let toParse = [];
-        
-          if (toStripe) {
-            toParse = JSON.parse(toStripe);
-          }
-              
-          const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
-          
-          console.log(ids)
       }
     } 
-      
-           
+                 
       function clearCart(){
         
         localStorage.removeItem('cartItems')
@@ -396,18 +384,9 @@ function removeFromCart(productName, cartItems, productElement) {
         output.innerText = "0"; // Clear UI cart balance
         sumPrice.innerText = "$0"; // Clear UI total price balance  
 
-         let toStripe = localStorage.getItem('cartItems');
-         let toParse = [];
-        
-          if (toStripe) {
-            toParse = JSON.parse(toStripe);
-          }
-              
-          const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
-          
-          console.log(ids)
       }
 
+        console.log(cartItems);
         let toStripe = localStorage.getItem('cartItems');
         let toParse = [];
         
@@ -418,8 +397,8 @@ function removeFromCart(productName, cartItems, productElement) {
           const ids = Array.isArray(toParse) ? toParse.map(product => product.id) : [];
           console.log(ids);
 
-  function checkOut(){
-    // Using fetch from your frontend JavaScript
+    function checkOut(){
+      // Using fetch from your frontend JavaScript
         if (ids.length < 1){
           window.alert("There are no items in the cart.")
         } else {
