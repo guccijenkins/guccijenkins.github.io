@@ -225,21 +225,26 @@
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#imageModal3">
-                    View
+                  <!-- Trigger Button -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary viewVideoBtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#videoModal"
+                          data-theVideo="https://www.youtube.com/embed/aZb9lCO7I20">
+                    View Video
                   </button>
-                  <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel3" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal" aria-hidden="true">
+                    <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="imageModalLabel3"><img></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center">
-                          <img src="https:\/\/images-api.printify.com\/mockup\/679520d91041f8b526045171\/72007\/14855\/die-cut-stickers-fighter-jet-military-airforce-navy-army-cockpit-top-gun-ace-fighter-aerospace-aeroplane-aeronautical.jpg?camera_label=context-1" class="img-fluid">
+                        <div class="modal-body">
+                          <div>
+                            <iframe id="video" width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
                   </div>
                     <button type="button" class="btn btn-sm btn-outline-secondary addToCartBtn" onclick="addToCart()">Add to Cart</button>
                 </div>
@@ -334,6 +339,23 @@
       }
       
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoModal = document.getElementById('videoModal');
+    const videoIframe = document.getElementById('video');
+
+    document.querySelectorAll('.viewVideoBtn').forEach(button => {
+      button.addEventListener('click', function () {
+        const videoSrc = this.getAttribute('data-theVideo');
+        videoIframe.src = videoSrc + "?autoplay=1&modestbranding=1&rel=0";
+      });
+    });
+
+    // Clear video when modal is closed
+    videoModal.addEventListener('hidden.bs.modal', function () {
+      videoIframe.src = "";
+    });
+  });
 
 </script>
 
