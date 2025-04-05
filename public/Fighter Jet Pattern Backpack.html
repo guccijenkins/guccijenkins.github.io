@@ -232,15 +232,28 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#imageModal6">
-                    View
+                    View Photos
                   </button>
-                  <div class="modal fade" id="imageModal6" tabindex="-1" aria-labelledby="imageModalLabel6" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                  <!-- Trigger Button -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary viewVideoBtn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#videoModal"
+                          data-theVideo="https://www.youtube.com/embed/ruINRowNwh8">
+                    View Video
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal" aria-hidden="true">
+                    <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="imageModalLabel6"><img></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-body">
+                          <div>
+                            <iframe id="video" width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
 
                         <div id="carouselExample" class="carousel carousel-dark slide">
                           <div class="carousel-inner">
@@ -383,6 +396,24 @@
 
       }
   }
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoModal = document.getElementById('videoModal');
+    const videoIframe = document.getElementById('video');
+
+    document.querySelectorAll('.viewVideoBtn').forEach(button => {
+      button.addEventListener('click', function () {
+        const videoSrc = this.getAttribute('data-theVideo');
+        videoIframe.src = videoSrc + "?autoplay=1&modestbranding=1&rel=0";
+      });
+    });
+
+    // Clear video when modal is closed
+    videoModal.addEventListener('hidden.bs.modal', function () {
+      videoIframe.src = "";
+    });
+  });
     
   
 </script>
